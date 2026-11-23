@@ -1,0 +1,133 @@
+.admin-panel {
+  padding: 20px;
+  min-width: 560px;
+  max-width: 720px;
+  max-height: 80vh;
+  overflow-y: auto;
+  font-family: Arial, sans-serif;
+}
+
+.admin-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.admin-panel__close {
+  border: none;
+  background: transparent;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.admin-panel__user {
+  font-size: 13px;
+  color: #555;
+  margin: 0 0 16px;
+}
+
+.admin-panel__form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  background: #fafafa;
+  margin-bottom: 20px;
+}
+
+.admin-panel__form h3,
+.admin-panel__list h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.admin-panel__form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  color: #333;
+}
+
+.admin-panel__form input {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.admin-panel__error {
+  color: #b00020;
+  font-size: 13px;
+}
+
+.admin-panel__submit {
+  align-self: flex-start;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background: #2e7d32;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.admin-panel__submit:hover {
+  background: #276b2b;
+}
+
+.admin-panel__list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.admin-panel__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.admin-panel__item-title {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.admin-panel__item-meta {
+  font-size: 12px;
+  color: #666;
+  margin-top: 2px;
+}
+
+.admin-panel__delete {
+  flex-shrink: 0;
+  padding: 6px 10px;
+  border: 1px solid #d32f2f;
+  border-radius: 6px;
+  background: #fff;
+  color: #d32f2f;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.admin-panel__delete:hover {
+  background: #d32f2f;
+  color: #fff;
+}
+
+.admin-panel__empty {
+  font-size: 13px;
+  color: #777;
+}

@@ -1,0 +1,127 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.login {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+  font-family: 'Comfortaa', cursive;
+}
+
+.form {
+  position: relative;
+  z-index: 1;
+  background: #ffffff;
+  border-radius: 10px;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center
+}
+
+.form input:focus {
+  background: #dbdbdb;
+}
+
+/* json-styles.css */
+.json-container {
+  width: 100%;
+}
+
+.json-content {
+  white-space: pre-wrap;        /* Поскольку мы используем JSON.stringify с отступами */
+  word-break: break-all;
+  margin: 0;
+  padding: 16px;
+  background-color: #f8f8f8;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 14px;
+  color: #333;
+  text-align: left;             /* Убираем выравнивание по центру */
+}
+
+.card-container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  background: #f8f8f8;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width: 200px;
+}
+
+.card h3 {
+  margin: 0 0 10px;
+}
+
+.red-button { 
+  background-color: red; 
+  color: white;
+  border-width: 1px;
+  border-color: black;
+}
+
+.modal-calendar {
+  padding: 16px;
+  min-width: 560px;
+}
+
+.modal-calendar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.modal-calendar__close {
+  border: none;
+  background: transparent;
+  font-size: 24px;
+  cursor: pointer;
+  line-height: 1;
+}
