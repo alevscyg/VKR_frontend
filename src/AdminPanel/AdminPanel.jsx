@@ -4,7 +4,8 @@ import './admin.css'
 export function AdminPanel({ events, user, onClose, onCreate, onDelete }) {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
-  const [date, setDate] = useState('')
+  const [date, setDate] = useState('')            // начало
+  const [endAt, setEndAt] = useState('')          // окончание - новое
   const [participants, setParticipants] = useState('')
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
@@ -13,6 +14,7 @@ export function AdminPanel({ events, user, onClose, onCreate, onDelete }) {
     setTitle('')
     setDescription('')
     setDate('')
+    setEndAt('')
     setParticipants('')
     setError('')
   }
@@ -21,7 +23,13 @@ export function AdminPanel({ events, user, onClose, onCreate, onDelete }) {
     e.preventDefault()
 
     if (!title.trim() || !date) {
-      setError('Укажите название и дату/время мероприятия.')
+      setError('Укажите название и дату/время начала мероприятия.')
+      return
+    }
+
+    // проверка временных границ на клиенте
+    if (endAt && new Date(endAt) <= new Date(date)) {
+      setError('Дата окончания должна быть позже даты начала.')
       return
     }
 
@@ -32,6 +40,7 @@ export function AdminPanel({ events, user, onClose, onCreate, onDelete }) {
         title: title.trim(),
         description: description.trim() || undefined,
         date: new Date(date).toISOString(),
+        endAt: endAt ? new Date(endAt).toISOString() : undefined,
         participants: participants
           .split(',')
           .map((s) => s.trim())
@@ -95,16 +104,28 @@ export function AdminPanel({ events, user, onClose, onCreate, onDelete }) {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Краткое описание"
+            maxLength={255}
             disabled={busy}
           />
         </label>
 
         <label>
-          Дата и время
+          Дата и время начала
           <input
             type="datetime-local"
             value={date}
             onChange={(e) => setDate(e.target.value)}
+            disabled={busy}
+            required
+          />
+        </label>
+
+        <label>
+          Дата и время окончания (необязательно)
+          <input
+            type="datetime-local"
+            value={endAt}
+            onChange={(e) => setEndAt(e.target.value)}
             disabled={busy}
           />
         </label>
@@ -141,6 +162,9 @@ export function AdminPanel({ events, user, onClose, onCreate, onDelete }) {
                 <div className="admin-panel__item-title">{ev.title}</div>
                 <div className="admin-panel__item-meta">
                   {new Date(ev.date).toLocaleString('ru-RU')}
+                  {ev.endAt && (
+                    <> — {new Date(ev.endAt).toLocaleTimeString('ru-RU')}</>
+                  )}
                   {ev.participants?.length > 0 && (
                     <> · участники: {ev.participants.join(', ')}</>
                   )}
