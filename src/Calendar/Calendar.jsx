@@ -78,31 +78,30 @@ export function Calendar({ events = [], onEventClick }) {
             }
           >
             {day && <span className="calendar__day">{day}</span>}
-            {day && eventsByDay[day]?.map((ev) => (
-              <div
-                key={ev.id ?? `${day}-${ev.title}`}
-                className="calendar__event"
-                title={ev.title}
-                role="button"
-                tabIndex={0}
-                style={{ cursor: 'pointer' }}
-                onClick={(e) => {
-                  e.stopPropagation()
-                  onEventClick?.(ev)
-                }}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault()
-                    onEventClick?.(ev)
-                  }
-                }}
-              >
-                {ev.title}
-                {ev.participants?.length > 0 && (
-                  <span className="calendar__event-count">· {ev.participants.length}</span>
-                )}
-              </div>
-            ))}
+            {day && eventsByDay[day]?.map((ev) => {
+              const startTime = new Date(ev.date).toLocaleTimeString('ru-RU', {
+                hour: '2-digit',
+                minute: '2-digit',
+              })
+              const endTime = ev.endAt
+                ? new Date(ev.endAt).toLocaleTimeString('ru-RU', {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                  })
+                : null
+              return (
+                <div
+                  key={ev.id}
+                  className="calendar__event"
+                  style={{ background: ev.type?.color ?? '#4a90e2' }}
+                  title={`${ev.title} (${startTime}${endTime ? `–${endTime}` : ''})`}
+                  onClick={() => onEventClick?.(ev)}
+                >
+                  {ev.title}
+                  {endTime && <span className="calendar__event-time"> {startTime}–{endTime}</span>}
+                </div>
+              )
+            })}
           </div>
         ))}
       </div>
